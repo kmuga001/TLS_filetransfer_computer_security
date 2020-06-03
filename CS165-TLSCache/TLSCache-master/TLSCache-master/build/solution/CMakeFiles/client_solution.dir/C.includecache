@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../extern/libressl_install/include/tls.h
+basetsd.h
+-
+sys/types.h
+-
+stddef.h
+-
+stdint.h
+-
+
+/home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/solution/client_solution/client.c
+arpa/inet.h
+-
+netinet/in.h
+-
+sys/types.h
+-
+sys/socket.h
+-
+err.h
+-
+errno.h
+-
+limits.h
+-
+signal.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
+tls.h
+-
+
