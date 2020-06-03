@@ -1,6 +1,0 @@
-/home/csmajs/kmuga001/CS_165PROJECT/build/CMakeFiles/rebuild_cache.dir
-/home/csmajs/kmuga001/CS_165PROJECT/build/CMakeFiles/edit_cache.dir
-/home/csmajs/kmuga001/CS_165PROJECT/build/src/CMakeFiles/rebuild_cache.dir
-/home/csmajs/kmuga001/CS_165PROJECT/build/src/CMakeFiles/server.dir
-/home/csmajs/kmuga001/CS_165PROJECT/build/src/CMakeFiles/edit_cache.dir
-/home/csmajs/kmuga001/CS_165PROJECT/build/src/CMakeFiles/client.dir
