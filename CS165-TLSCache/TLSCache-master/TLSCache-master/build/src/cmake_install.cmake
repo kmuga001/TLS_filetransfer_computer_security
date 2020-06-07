@@ -1,4 +1,4 @@
-# Install script for directory: /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/src
+# Install script for directory: /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

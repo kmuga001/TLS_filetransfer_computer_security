@@ -59,19 +59,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/extern/cmake/bin/cmake
+CMAKE_COMMAND = /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/extern/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/extern/cmake/bin/cmake -E rm -f
+RM = /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/extern/cmake/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master
+CMAKE_SOURCE_DIR = /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build
+CMAKE_BINARY_DIR = /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/CMakeFiles /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/CMakeFiles /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -157,6 +157,19 @@ client/fast:
 .PHONY : client/fast
 
 #=============================================================================
+# Target rules for targets named client_solution
+
+# Build rule for target.
+client_solution: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 client_solution
+.PHONY : client_solution
+
+# fast build rule for target.
+client_solution/fast:
+	$(MAKE) $(MAKESILENT) -f solution/CMakeFiles/client_solution.dir/build.make solution/CMakeFiles/client_solution.dir/build
+.PHONY : client_solution/fast
+
+#=============================================================================
 # Target rules for targets named server_solution
 
 # Build rule for target.
@@ -170,17 +183,17 @@ server_solution/fast:
 .PHONY : server_solution/fast
 
 #=============================================================================
-# Target rules for targets named client_solution
+# Target rules for targets named proxy
 
 # Build rule for target.
-client_solution: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 client_solution
-.PHONY : client_solution
+proxy: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 proxy
+.PHONY : proxy
 
 # fast build rule for target.
-client_solution/fast:
-	$(MAKE) $(MAKESILENT) -f solution/CMakeFiles/client_solution.dir/build.make solution/CMakeFiles/client_solution.dir/build
-.PHONY : client_solution/fast
+proxy/fast:
+	$(MAKE) $(MAKESILENT) -f solution/CMakeFiles/proxy.dir/build.make solution/CMakeFiles/proxy.dir/build
+.PHONY : proxy/fast
 
 # Help Target
 help:
@@ -192,6 +205,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... client"
 	@echo "... client_solution"
+	@echo "... proxy"
 	@echo "... server"
 	@echo "... server_solution"
 .PHONY : help

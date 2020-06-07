@@ -1,4 +1,4 @@
-# Install script for directory: /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master
+# Install script for directory: /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +39,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/src/cmake_install.cmake")
-  include("/home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution/cmake_install.cmake")
+  include("/home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/src/cmake_install.cmake")
+  include("/home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution/cmake_install.cmake")
 
 endif()
 
@@ -52,5 +52,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

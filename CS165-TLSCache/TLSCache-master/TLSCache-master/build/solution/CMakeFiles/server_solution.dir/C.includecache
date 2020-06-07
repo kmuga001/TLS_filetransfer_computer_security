@@ -16,7 +16,7 @@ stddef.h
 stdint.h
 -
 
-/home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/solution/server_solution/server.c
+/home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/solution/server_solution/server.c
 sys/types.h
 -
 sys/socket.h

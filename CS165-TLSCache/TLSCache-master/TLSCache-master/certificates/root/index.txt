@@ -1,1 +1,1 @@
-V	300412070930Z		1000	unknown	/C=CA/ST=Edmonton/O=Bob Beck/OU=LibTLS Tutorial/CN=Intermediate CA Cert
+V	300416005121Z		1000	unknown	/C=CA/ST=Edmonton/O=Bob Beck/OU=LibTLS Tutorial/CN=Intermediate CA Cert

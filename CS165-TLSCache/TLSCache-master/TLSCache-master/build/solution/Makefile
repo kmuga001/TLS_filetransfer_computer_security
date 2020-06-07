@@ -59,33 +59,22 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/extern/cmake/bin/cmake
+CMAKE_COMMAND = /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/extern/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/extern/cmake/bin/cmake -E rm -f
+RM = /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/extern/cmake/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master
+CMAKE_SOURCE_DIR = /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build
+CMAKE_BINARY_DIR = /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	../../extern/cmake/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -98,16 +87,27 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	../../extern/cmake/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/CMakeFiles /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution/CMakeFiles/progress.marks
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 solution/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/CMakeFiles 0
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/CMakeFiles /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution/CMakeFiles/progress.marks
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 solution/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 solution/clean
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 solution/clean
 .PHONY : clean
 
 # The main clean target
@@ -117,37 +117,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 solution/preinstall
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 solution/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 solution/preinstall
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 solution/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-solution/CMakeFiles/server_solution.dir/rule:
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 solution/CMakeFiles/server_solution.dir/rule
-.PHONY : solution/CMakeFiles/server_solution.dir/rule
-
-# Convenience name for target.
-server_solution: solution/CMakeFiles/server_solution.dir/rule
-
-.PHONY : server_solution
-
-# fast build rule for target.
-server_solution/fast:
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/server_solution.dir/build.make solution/CMakeFiles/server_solution.dir/build
-.PHONY : server_solution/fast
-
-# Convenience name for target.
 solution/CMakeFiles/client_solution.dir/rule:
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 solution/CMakeFiles/client_solution.dir/rule
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 solution/CMakeFiles/client_solution.dir/rule
 .PHONY : solution/CMakeFiles/client_solution.dir/rule
 
 # Convenience name for target.
@@ -157,8 +142,38 @@ client_solution: solution/CMakeFiles/client_solution.dir/rule
 
 # fast build rule for target.
 client_solution/fast:
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/client_solution.dir/build.make solution/CMakeFiles/client_solution.dir/build
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/client_solution.dir/build.make solution/CMakeFiles/client_solution.dir/build
 .PHONY : client_solution/fast
+
+# Convenience name for target.
+solution/CMakeFiles/server_solution.dir/rule:
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 solution/CMakeFiles/server_solution.dir/rule
+.PHONY : solution/CMakeFiles/server_solution.dir/rule
+
+# Convenience name for target.
+server_solution: solution/CMakeFiles/server_solution.dir/rule
+
+.PHONY : server_solution
+
+# fast build rule for target.
+server_solution/fast:
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/server_solution.dir/build.make solution/CMakeFiles/server_solution.dir/build
+.PHONY : server_solution/fast
+
+# Convenience name for target.
+solution/CMakeFiles/proxy.dir/rule:
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 solution/CMakeFiles/proxy.dir/rule
+.PHONY : solution/CMakeFiles/proxy.dir/rule
+
+# Convenience name for target.
+proxy: solution/CMakeFiles/proxy.dir/rule
+
+.PHONY : proxy
+
+# fast build rule for target.
+proxy/fast:
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/proxy.dir/build.make solution/CMakeFiles/proxy.dir/build
+.PHONY : proxy/fast
 
 client_solution/client.o: client_solution/client.c.o
 
@@ -166,7 +181,7 @@ client_solution/client.o: client_solution/client.c.o
 
 # target to build an object file
 client_solution/client.c.o:
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/client_solution.dir/build.make solution/CMakeFiles/client_solution.dir/client_solution/client.c.o
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/client_solution.dir/build.make solution/CMakeFiles/client_solution.dir/client_solution/client.c.o
 .PHONY : client_solution/client.c.o
 
 client_solution/client.i: client_solution/client.c.i
@@ -175,7 +190,7 @@ client_solution/client.i: client_solution/client.c.i
 
 # target to preprocess a source file
 client_solution/client.c.i:
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/client_solution.dir/build.make solution/CMakeFiles/client_solution.dir/client_solution/client.c.i
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/client_solution.dir/build.make solution/CMakeFiles/client_solution.dir/client_solution/client.c.i
 .PHONY : client_solution/client.c.i
 
 client_solution/client.s: client_solution/client.c.s
@@ -184,8 +199,35 @@ client_solution/client.s: client_solution/client.c.s
 
 # target to generate assembly for a file
 client_solution/client.c.s:
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/client_solution.dir/build.make solution/CMakeFiles/client_solution.dir/client_solution/client.c.s
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/client_solution.dir/build.make solution/CMakeFiles/client_solution.dir/client_solution/client.c.s
 .PHONY : client_solution/client.c.s
+
+proxy/proxy.o: proxy/proxy.c.o
+
+.PHONY : proxy/proxy.o
+
+# target to build an object file
+proxy/proxy.c.o:
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/proxy.dir/build.make solution/CMakeFiles/proxy.dir/proxy/proxy.c.o
+.PHONY : proxy/proxy.c.o
+
+proxy/proxy.i: proxy/proxy.c.i
+
+.PHONY : proxy/proxy.i
+
+# target to preprocess a source file
+proxy/proxy.c.i:
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/proxy.dir/build.make solution/CMakeFiles/proxy.dir/proxy/proxy.c.i
+.PHONY : proxy/proxy.c.i
+
+proxy/proxy.s: proxy/proxy.c.s
+
+.PHONY : proxy/proxy.s
+
+# target to generate assembly for a file
+proxy/proxy.c.s:
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/proxy.dir/build.make solution/CMakeFiles/proxy.dir/proxy/proxy.c.s
+.PHONY : proxy/proxy.c.s
 
 server_solution/server.o: server_solution/server.c.o
 
@@ -193,7 +235,7 @@ server_solution/server.o: server_solution/server.c.o
 
 # target to build an object file
 server_solution/server.c.o:
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/server_solution.dir/build.make solution/CMakeFiles/server_solution.dir/server_solution/server.c.o
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/server_solution.dir/build.make solution/CMakeFiles/server_solution.dir/server_solution/server.c.o
 .PHONY : server_solution/server.c.o
 
 server_solution/server.i: server_solution/server.c.i
@@ -202,7 +244,7 @@ server_solution/server.i: server_solution/server.c.i
 
 # target to preprocess a source file
 server_solution/server.c.i:
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/server_solution.dir/build.make solution/CMakeFiles/server_solution.dir/server_solution/server.c.i
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/server_solution.dir/build.make solution/CMakeFiles/server_solution.dir/server_solution/server.c.i
 .PHONY : server_solution/server.c.i
 
 server_solution/server.s: server_solution/server.c.s
@@ -211,7 +253,7 @@ server_solution/server.s: server_solution/server.c.s
 
 # target to generate assembly for a file
 server_solution/server.c.s:
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/server_solution.dir/build.make solution/CMakeFiles/server_solution.dir/server_solution/server.c.s
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(MAKE) $(MAKESILENT) -f solution/CMakeFiles/server_solution.dir/build.make solution/CMakeFiles/server_solution.dir/server_solution/server.c.s
 .PHONY : server_solution/server.c.s
 
 # Help Target
@@ -223,10 +265,14 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... client_solution"
+	@echo "... proxy"
 	@echo "... server_solution"
 	@echo "... client_solution/client.o"
 	@echo "... client_solution/client.i"
 	@echo "... client_solution/client.s"
+	@echo "... proxy/proxy.o"
+	@echo "... proxy/proxy.i"
+	@echo "... proxy/proxy.s"
 	@echo "... server_solution/server.o"
 	@echo "... server_solution/server.i"
 	@echo "... server_solution/server.s"
@@ -241,6 +287,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

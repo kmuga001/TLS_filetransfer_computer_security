@@ -54,19 +54,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/extern/cmake/bin/cmake
+CMAKE_COMMAND = /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/extern/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/extern/cmake/bin/cmake -E rm -f
+RM = /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/extern/cmake/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master
+CMAKE_SOURCE_DIR = /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build
+CMAKE_BINARY_DIR = /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build
 
 # Include any dependencies generated for this target.
 include solution/CMakeFiles/client_solution.dir/depend.make
@@ -79,16 +79,16 @@ include solution/CMakeFiles/client_solution.dir/flags.make
 
 solution/CMakeFiles/client_solution.dir/client_solution/client.c.o: solution/CMakeFiles/client_solution.dir/flags.make
 solution/CMakeFiles/client_solution.dir/client_solution/client.c.o: ../solution/client_solution/client.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object solution/CMakeFiles/client_solution.dir/client_solution/client.c.o"
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/client_solution.dir/client_solution/client.c.o   -c /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/solution/client_solution/client.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object solution/CMakeFiles/client_solution.dir/client_solution/client.c.o"
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/client_solution.dir/client_solution/client.c.o   -c /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/solution/client_solution/client.c
 
 solution/CMakeFiles/client_solution.dir/client_solution/client.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/client_solution.dir/client_solution/client.c.i"
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/solution/client_solution/client.c > CMakeFiles/client_solution.dir/client_solution/client.c.i
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/solution/client_solution/client.c > CMakeFiles/client_solution.dir/client_solution/client.c.i
 
 solution/CMakeFiles/client_solution.dir/client_solution/client.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/client_solution.dir/client_solution/client.c.s"
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/solution/client_solution/client.c -o CMakeFiles/client_solution.dir/client_solution/client.c.s
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/solution/client_solution/client.c -o CMakeFiles/client_solution.dir/client_solution/client.c.s
 
 # Object files for target client_solution
 client_solution_OBJECTS = \
@@ -103,8 +103,8 @@ solution/client_solution: ../extern/libressl_install/lib/libtls.so
 solution/client_solution: ../extern/libressl_install/lib/libssl.so
 solution/client_solution: ../extern/libressl_install/lib/libcrypto.so
 solution/client_solution: solution/CMakeFiles/client_solution.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable client_solution"
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/client_solution.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable client_solution"
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/client_solution.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 solution/CMakeFiles/client_solution.dir/build: solution/client_solution
@@ -112,10 +112,10 @@ solution/CMakeFiles/client_solution.dir/build: solution/client_solution
 .PHONY : solution/CMakeFiles/client_solution.dir/build
 
 solution/CMakeFiles/client_solution.dir/clean:
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution && $(CMAKE_COMMAND) -P CMakeFiles/client_solution.dir/cmake_clean.cmake
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution && $(CMAKE_COMMAND) -P CMakeFiles/client_solution.dir/cmake_clean.cmake
 .PHONY : solution/CMakeFiles/client_solution.dir/clean
 
 solution/CMakeFiles/client_solution.dir/depend:
-	cd /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/solution /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution/CMakeFiles/client_solution.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/solution /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/build/solution/CMakeFiles/client_solution.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : solution/CMakeFiles/client_solution.dir/depend
 

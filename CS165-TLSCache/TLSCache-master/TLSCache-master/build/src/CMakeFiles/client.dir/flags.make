@@ -6,5 +6,5 @@ C_FLAGS = -O3 -DNDEBUG
 
 C_DEFINES = 
 
-C_INCLUDES = -isystem /home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/extern/libressl_install/include 
+C_INCLUDES = -isystem /home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/extern/libressl_install/include 
 

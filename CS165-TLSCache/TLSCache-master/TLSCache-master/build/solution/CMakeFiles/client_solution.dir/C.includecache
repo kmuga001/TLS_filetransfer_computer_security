@@ -16,7 +16,7 @@ stddef.h
 stdint.h
 -
 
-/home/csmajs/tmali001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/solution/client_solution/client.c
+/home/csmajs/kmuga001/CS_165PROJECT/CS165-TLSCache/TLSCache-master/TLSCache-master/solution/client_solution/client.c
 arpa/inet.h
 -
 netinet/in.h
