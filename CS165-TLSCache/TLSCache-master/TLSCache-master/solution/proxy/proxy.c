@@ -216,9 +216,21 @@ int main(int argc,  char *argv[])
 
 			/*set up server connection here bc we successfully accepted socket
  			* and are now ready to set up new socket to give to our server (memset client part)*/
+			
+			/*first, set up server_sa to be location of the server_solution --> WORKS */
+			memset(&server_sa, 0, sizeof(server_sa));
+			server_sa.sin_family = AF_INET;
+			server_sa.sin_port = htons(port_server);
+			
+			const char *temp_proxyid = "192.168.1.108";
+			server_sa.sin_addr.s_addr = inet_addr(temp_proxyid);
+			if (server_sa.sin_addr.s_addr == INADDR_NONE) {
+				fprintf(stderr, "Invalid IP address %s\n", temp_proxyid);
+				usage();
+			}
 
-
-
+			/*printf("This is proxy's ip address!!!: %s\n", temp_proxyid);
+			*/
 
 
 
