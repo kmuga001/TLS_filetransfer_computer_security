@@ -14,6 +14,8 @@
 
 #include <tls.h>
 
+//using namespace std;
+
 static void usage()
 {
 	extern char * __progname;
@@ -71,19 +73,39 @@ int main(int argc,  char *argv[])
 	port = p; /*The port = PROXY'S PORT*/
 
 	/* set up TLS */
+	char cwd[100000];
+	const char* tempfile = getcwd(cwd, sizeof(cwd));
+	
+	/*ROOT_PEM*/
+	char des_r[100000];
+	strcat(des_r, tempfile);
+	strcat(des_r, "/certificates/root.pem");
+
+	/*SERVER_CRT*/
+	char des_scrt[100000];
+        strcat(des_scrt, tempfile);
+        strcat(des_scrt, "/certificates/server.crt");	
+
+	/*SERVER.KEY*/
+        char des_skey[100000];
+        strcat(des_skey, tempfile);
+        strcat(des_skey, "/certificates/server.key");
+
+	/*printf("THIS PAAAATH: %s", des);
+	getcwd(cwd, sizeof(cwd));*/
 	if ((tls_cfg = tls_config_new()) == NULL)
 		errx(1, "unable to allocate TLS config");
-	if (tls_config_set_ca_file(tls_cfg, "../../../../../../../certificates/root.pem") == -1)
+	if (tls_config_set_ca_file(tls_cfg, des_r) == -1)
 		errx(1, "unable to set root CA file");
-	if (tls_config_set_cert_file(tls_cfg, "../../certificates/server.crt") == -1) 
+	if (tls_config_set_cert_file(tls_cfg, des_scrt) == -1) 
 		errx(1, "unable to set TLS certificate file, error: (%s)", tls_config_error(tls_cfg));
-	if (tls_config_set_key_file(tls_cfg, "/home/praja002/Teaching/CS165-Security-Spring2020/tlscache/certificates/server.key") == -1)
+	if (tls_config_set_key_file(tls_cfg, des_skey) == -1)
 		errx(1, "unable to set TLS key file");
 	if ((tls_ctx = tls_server()) == NULL)
 		errx(1, "TLS server creation failed");
 	if (tls_configure(tls_ctx, tls_cfg) == -1)
 		errx(1, "TLS configuration failed (%s)", tls_error(tls_ctx));
-
+	
 	/* the message we send the client!!!!!!!!! --> need to fix this 
  	* bc we dont have access to this  message in proxy */
 	

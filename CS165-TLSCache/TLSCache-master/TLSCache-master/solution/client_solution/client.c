@@ -55,12 +55,23 @@ int main(int argc, char *argv[])
 	port = p;
 
 	/* set up TLS */
+	char cwd[100000];
+        const char* tempfile = getcwd(cwd, sizeof(cwd));
+
+        /*ROOT_PEM*/
+        char des_r[100000];
+        strcat(des_r, tempfile);
+        strcat(des_r, "/certificates/root.pem");
+
+
 	if (tls_init() == -1)
 		errx(1, "unable to initialize TLS");
 	if ((tls_cfg = tls_config_new()) == NULL)
 		errx(1, "unable to allocate TLS config");
-	if (tls_config_set_ca_file(tls_cfg, "/home/praja002/Teaching/CS165-Security-Spring2020/tlscache/certificates/root.pem") == -1)
+	if (tls_config_set_ca_file(tls_cfg, des_r) == -1)
 		errx(1, "unable to set root CA file");
+	
+
 
 	/*
 	 * first set up "server_sa" to be the location of the server
