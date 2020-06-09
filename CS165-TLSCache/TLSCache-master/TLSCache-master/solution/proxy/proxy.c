@@ -1,9 +1,7 @@
-#include <arpa/inet.h>
-
-#include <netinet/in.h>
-
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/wait.h>
+#include <netinet/in.h>
 
 #include <err.h>
 #include <errno.h>
@@ -15,15 +13,22 @@
 #include <unistd.h>
 
 #include <tls.h>
+
+static void usage()
+{
+	extern char * __progname;
+	fprintf(stderr, "usage: %s portnumber\n", __progname);
+	exit(1);
+}
+
 /*OVERVIEW:
  * treating proxy as a SERVER base, however when we need the server's
  * message, proxy will act as a client and read the message the server gave in buffer.
  * After reading the message, the proxy will write that into the buffer so that client can read it*/
-static void usage()
-{       
-        extern char * __progname;
-        fprintf(stderr, "usage: %s ipaddress portnumber\n", __progname);
-        exit(1);
+
+static void kidhandler(int signum) {
+	/* signal handler for SIGCHLD */
+	waitpid(WAIT_ANY, NULL, WNOHANG);
 }
 
 int main(int argc,  char *argv[])
@@ -68,9 +73,9 @@ int main(int argc,  char *argv[])
 	/* set up TLS */
 	if ((tls_cfg = tls_config_new()) == NULL)
 		errx(1, "unable to allocate TLS config");
-	if (tls_config_set_ca_file(tls_cfg, "/home/praja002/Teaching/CS165-Security-Spring2020/tlscache/certificates/root.pem") == -1)
+	if (tls_config_set_ca_file(tls_cfg, "../../../../../../../certificates/root.pem") == -1)
 		errx(1, "unable to set root CA file");
-	if (tls_config_set_cert_file(tls_cfg, "/home/praja002/Teaching/CS165-Security-Spring2020/tlscache/certificates/server.crt") == -1) 
+	if (tls_config_set_cert_file(tls_cfg, "../../certificates/server.crt") == -1) 
 		errx(1, "unable to set TLS certificate file, error: (%s)", tls_config_error(tls_cfg));
 	if (tls_config_set_key_file(tls_cfg, "/home/praja002/Teaching/CS165-Security-Spring2020/tlscache/certificates/server.key") == -1)
 		errx(1, "unable to set TLS key file");
