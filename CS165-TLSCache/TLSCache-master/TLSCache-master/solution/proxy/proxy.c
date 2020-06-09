@@ -1,3 +1,5 @@
+#include <arpa/inet.h> /*COMING FROM CLIENT*/
+
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/wait.h>
@@ -41,27 +43,47 @@ int main(int argc,  char *argv[])
 	int sd, i;
 	socklen_t clientlen;
 	u_short port;
+	u_short port_server; //SERVER'S PORT ADDED
 	pid_t pid;
 	u_long p;
+	u_long p_s; //SERVER'S PORT ARGV PART
 	struct tls_config *tls_cfg = NULL; /*TLS config*/
 	struct tls *tls_ctx = NULL; /*TLS context*/
 	struct tls *tls_cctx = NULL; /*client's TLS context*/
+	
 
+	/*CLIENT PARTS ADDED*/
+	struct sockaddr_in server_sa;
+	size_t maxread;
+	ssize_t r, rc;
 
 /*
  * first, figure out what port we will listen on - it should
  * be our first parameter.
  */
 
-	if (argc != 2)
+	if (argc != 3) /*argc changes from 2 --> 3 */
 		usage();
 		errno = 0;
+
+	/*Checking proxy's port*/
         p = strtoul(argv[1], &ep, 10);
         if (*argv[1] == '\0' || *ep != '\0') {
 		/* parameter wasn't a number, or was empty */
 		fprintf(stderr, "%s - not a number\n", argv[1]);
 		usage();
 	}
+
+	
+	/*Checking server's port */
+	p_s = strtoul(argv[2], &ep, 10);
+	if (*argv[2] == '\0' || *ep != '\0') {
+		/* parameter wasn't a number, or was empty */
+		fprintf(stderr, "%s - not a number\n", argv[2]);
+		usage();
+	}
+
+
         if ((errno == ERANGE && p == ULONG_MAX) || (p > USHRT_MAX)) {
 		/* It's a number, but it either can't fit in an unsigned
   		 * long, or is too big for an unsigned short
@@ -71,6 +93,8 @@ int main(int argc,  char *argv[])
 	}
 	/* now safe to do this */
 	port = p; /*The port = PROXY'S PORT*/
+
+	port_server = p_s; /*This port = SERVER'S PORT*/
 
 	/* set up TLS */
 	char cwd[100000];
@@ -177,7 +201,7 @@ int main(int argc,  char *argv[])
 		     err(1, "fork failed");
 
 		if(pid == 0) { /*!!!!!! NEED TO CONNECT WITH SERVER HERE TO GET THE MESSAGE*/
-			/*We can only complete this part AFTER GETTING SERVER'S MESSAGE */
+			/*We can only send/write message to client AFTER setting up server!! */
 			ssize_t written, w;
 			i = 0;
 			if (tls_accept_socket(tls_ctx, &tls_cctx, clientsd) == -1)
@@ -188,6 +212,15 @@ int main(int argc,  char *argv[])
 						errx(1, "tls handshake failed (%s)", tls_error(tls_ctx));
 				} while(i == TLS_WANT_POLLIN || i == TLS_WANT_POLLOUT);
 			}
+
+
+			/*set up server connection here bc we successfully accepted socket
+ 			* and are now ready to set up new socket to give to our server (memset client part)*/
+
+
+
+
+
 
 			/*
   			 * write the message to the CLIENT, being sure to
