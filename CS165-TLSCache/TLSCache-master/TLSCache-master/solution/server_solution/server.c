@@ -196,6 +196,7 @@ int main(int argc,  char *argv[])
 				}
 				else
 					written += w;
+				printf("IM WHILE WRITING %s\n", "SERVER_SOLUTION");
 			}
 			i = 0;
 			do {

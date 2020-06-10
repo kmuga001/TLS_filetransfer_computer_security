@@ -41,6 +41,7 @@ int main(int argc,  char *argv[])
 	char buffer[80], *ep;
 	struct sigaction sa;
 	int sd, i;
+	int sd_2, i_2; //for making handshake with server!!
 	socklen_t clientlen;
 	u_short port;
 	u_short port_server; //SERVER'S PORT ADDED
@@ -54,9 +55,11 @@ int main(int argc,  char *argv[])
 
 	/*CLIENT PARTS ADDED*/
 	struct sockaddr_in server_sa;
+	struct tls_config *tls_cfg2 = NULL; //for getting socket
+	struct tls *tls_ctx2 = NULL;
 	size_t maxread;
 	ssize_t r, rc;
-
+	char buffer2[80];
 /*
  * first, figure out what port we will listen on - it should
  * be our first parameter.
@@ -130,11 +133,19 @@ int main(int argc,  char *argv[])
 	if (tls_configure(tls_ctx, tls_cfg) == -1)
 		errx(1, "TLS configuration failed (%s)", tls_error(tls_ctx));
 	
+	/*Set up TLS certificate authentication to connect with server_solution */
+	if (tls_init() == -1)
+		errx(1, "unable to initialize TLS");
+	if ((tls_cfg2 = tls_config_new()) == NULL)
+		errx(1, "unable to allocate TLS config2");
+	if (tls_config_set_ca_file(tls_cfg2, des_r) == -1)
+		errx(1, "unable to set root CA file2");
+
 	/* the message we send the client!!!!!!!!! --> need to fix this 
  	* bc we dont have access to this  message in proxy */
 	
 	strlcpy(buffer,
-	    "It was the best of times, it was the worst of times... \n",
+	    "incorrect message is written, this is not from server_solution... \n",
 	    sizeof(buffer));
 	
 
@@ -184,6 +195,31 @@ int main(int argc,  char *argv[])
   	 */
 	printf("PROXY up and listening for connections on proxy's port %u\n", port);
 	
+
+	 /*first, set up server_sa to be location of the server_solution --> WORKS */
+                      
+                           /*we successfully connected with server_solution. Server_solution 
+ *                          * will give us the message contents. we need to read that message first*/
+
+
+		/*
+                       * finally, we are connected. find out what magnificent wisdom
+                       * our server is going to send to us - since we really don't know
+                       * how much data the server could send to us, we have decided
+                       * we'll stop reading when either our buffer is full, or when
+                       * we get an end of file condition from the read when we read
+                       * 0 bytes - which means that we pretty much assume the server
+                       * is going to send us an entire message, then close the connection
+                       * to us, so that we see an end-of-file condition on the read.
+                       * we also make sure we handle EINTR in case we got interrupted
+                       * by a signal.                     */
+        
+
+
+
+
+
+	
 	for(;;) {
 		int clientsd;
 		clientlen = sizeof(&client);
@@ -222,7 +258,7 @@ int main(int argc,  char *argv[])
 			server_sa.sin_family = AF_INET;
 			server_sa.sin_port = htons(port_server);
 			
-			const char *temp_proxyid = "192.168.1.108";
+			const char *temp_proxyid = "127.0.0.1";
 			server_sa.sin_addr.s_addr = inet_addr(temp_proxyid);
 			if (server_sa.sin_addr.s_addr == INADDR_NONE) {
 				fprintf(stderr, "Invalid IP address %s\n", temp_proxyid);
@@ -232,6 +268,69 @@ int main(int argc,  char *argv[])
 			/*printf("This is proxy's ip address!!!: %s\n", temp_proxyid);
 			*/
 
+			/* NOW, GET A SOCKET*/
+			if ((sd_2=socket(AF_INET,SOCK_STREAM,0)) == 1)
+				err(1, "socket failed");
+			
+			/* connect the socket to server_solution described in "server_sa"*/
+			if (connect(sd_2, (struct sockaddr *)&server_sa, sizeof(server_sa)) == -1)
+				err(1, "connect failed");
+
+			if ((tls_ctx2 = tls_client()) == NULL)
+				errx(1, "tls client creation failed");
+			if (tls_configure(tls_ctx2, tls_cfg2) == -1)
+				errx(1, "tls configuration failed (%s)", tls_error(tls_ctx2));
+			if (tls_connect_socket(tls_ctx2, sd_2, "localhost") == -1)
+				errx(1, "tls connection failed (%s)", tls_error(tls_ctx2));
+
+			printf("I connected with server_solution!!! %s\n", temp_proxyid);
+			do {
+				if ((i_2 = tls_handshake(tls_ctx2)) == -1)
+					errx(1, "tls handshake failed (%s)", tls_error(tls_ctx2));
+			} while(i_2 == TLS_WANT_POLLIN || i_2 == TLS_WANT_POLLOUT);
+			
+			/*we successfully connected with server_solution. Server_solution 
+ 			 * will give us the message contents. we need to read that message first*/
+		
+			
+			/*
+ * 	 		* finally, we are connected. find out what magnificent wisdom
+ * 	 		* our server is going to send to us - since we really don't know
+ * 	 		* how much data the server could send to us, we have decided
+ * 	 		* we'll stop reading when either our buffer is full, or when
+ * 	 		* we get an end of file condition from the read when we read
+ * 	 		* 0 bytes - which means that we pretty much assume the server
+ * 	 		* is going to send us an entire message, then close the connection
+ *       		* to us, so that we see an end-of-file condition on the read.
+ * 			* we also make sure we handle EINTR in case we got interrupted
+ * 	 		* by a signal.
+ *       		*/
+			r = -1;
+			rc = 0;
+			maxread = sizeof(buffer2) - 1; /* leave room for a 0 byte */
+			while ((r != 0) && rc < maxread) {
+				r = tls_read(tls_ctx2, buffer2 + rc, maxread - rc);
+				if (r == TLS_WANT_POLLIN || r == TLS_WANT_POLLOUT)
+					continue;
+				if (r < 0) {
+					err(1, "tls_read failed (%s)", tls_error(tls_ctx2));
+				} else
+					rc += r;
+			}
+
+			/*
+ * 	 		 * we must make absolutely sure buffer has a terminating 0 byte
+ * 	 	 	 * if we are to use it as a C string
+ * 	 	 	 */
+			buffer2[rc] = '\0';
+			
+			printf("Server_SOLUTION sent:  %s",buffer2);
+			close(sd_2);
+
+
+
+
+
 
 
 			/*
@@ -239,6 +338,38 @@ int main(int argc,  char *argv[])
   			 * handle a short write, or being interrupted by
   			 * a signal before we could write anything.
   			 */
+
+			w = 0;
+                        written = 0;
+                        while (written < strlen(buffer2)) {
+                                w = tls_write(tls_cctx, buffer2 + written,
+                                    strlen(buffer2) - written);
+
+                                if (w == TLS_WANT_POLLIN || w == TLS_WANT_POLLOUT)
+                                        continue;
+
+                                if (w < 0) {
+                                        errx(1, "TLS write failed (%s)", tls_error(tls_cctx));
+                                }
+                                else
+                                        written += w;
+                        }
+                        i = 0;
+                        do {
+                                i = tls_close(tls_cctx);
+                        } while(i == TLS_WANT_POLLIN || i == TLS_WANT_POLLOUT);
+
+                        close(clientsd);
+                        exit(0);
+
+
+
+
+
+
+
+
+/*
 			w = 0;
 			written = 0;
 			while (written < strlen(buffer)) {
@@ -261,7 +392,7 @@ int main(int argc,  char *argv[])
 
 			close(clientsd);
 			exit(0);
-		}
+*/		}
 		close(clientsd);
 	}
 }	

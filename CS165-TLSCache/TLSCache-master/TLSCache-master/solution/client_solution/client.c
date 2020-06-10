@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Invalid IP address %s\n", argv[1]);
 		usage();
 	}
-
+	
 	/* ok now get a socket. */
 	if ((sd=socket(AF_INET,SOCK_STREAM,0)) == -1)
 		err(1, "socket failed");
@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
 		errx(1, "tls configuration failed (%s)", tls_error(tls_ctx));
 	if (tls_connect_socket(tls_ctx, sd, "localhost") == -1)
 		errx(1, "tls connection failed (%s)", tls_error(tls_ctx));
-
+	
 
 	do {
 		if ((i = tls_handshake(tls_ctx)) == -1)
@@ -119,10 +119,14 @@ int main(int argc, char *argv[])
 	 * we also make sure we handle EINTR in case we got interrupted
 	 * by a signal.
 	 */
+	
+	printf("IM READING NOWWWWWW %s\n", "CLIENT");
+
 	r = -1;
 	rc = 0;
 	maxread = sizeof(buffer) - 1; /* leave room for a 0 byte */
 	while ((r != 0) && rc < maxread) {
+		printf("IN THE WHILEEEE READ %s\n", "CLIENT");
 		r = tls_read(tls_ctx, buffer + rc, maxread - rc);
 		if (r == TLS_WANT_POLLIN || r == TLS_WANT_POLLOUT)
 			continue;
