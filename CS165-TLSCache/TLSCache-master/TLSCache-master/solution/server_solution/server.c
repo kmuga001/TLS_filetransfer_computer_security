@@ -207,6 +207,15 @@ int main(int argc,  char *argv[])
 				} while(i == TLS_WANT_POLLIN || i == TLS_WANT_POLLOUT);
 			}
 
+			ssize_t t;
+			char buff_filename[200];
+			memset(buff_filename, 0, sizeof(buff_filename));
+			if((t = tls_read(tls_cctx, buff_filename, sizeof(buff_filename)-1)) == -1){
+				errx(1, "Error: couldn't read proxy's filename\n");
+			}
+
+			printf("SERVER FILENAME RECEIVED: %s\n", buff_filename);
+
 			/*
 			 * write the message to the client, being sure to
 			 * handle a short write, or being interrupted by
@@ -226,7 +235,7 @@ int main(int argc,  char *argv[])
 				}
 				else
 					written += w;
-				printf("IM WHILE WRITING %s\n", "SERVER_SOLUTION");
+				
 			}
 			i = 0;
 			do {

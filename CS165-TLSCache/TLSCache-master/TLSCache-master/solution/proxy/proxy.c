@@ -294,6 +294,15 @@ int main(int argc,  char *argv[])
  * 			* we also make sure we handle EINTR in case we got interrupted
  * 	 		* by a signal.
  *       		*/
+
+			/*We need to send the filename (buff_readf) to server */
+			ssize_t w_s;
+			ssize_t temp_buflen = strnlen(buff_readf, sizeof(buff_readf));
+			if((w_s = tls_write(tls_ctx2, buff_readf, temp_buflen)) != temp_buflen) {
+				errx(1, "Failed to write filename message");
+			}
+
+
 			r = -1;
 			rc = 0;
 			maxread = sizeof(buffer2) - 1; /* leave room for a 0 byte */
