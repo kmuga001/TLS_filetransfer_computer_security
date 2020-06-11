@@ -111,34 +111,6 @@ int main(int argc,  char *argv[])
 	    sizeof(buffer));
 	*/
 
-
-	/*get filename's path!!!! */
-	char cwd_file[10000];
-	const char* temp_f = getcwd(cwd_file, sizeof(cwd_file));
-	char filepath[10000];
-	strcat(filepath, temp_f);
-	strcat(filepath, "/solution/testing_files/test1.txt"); /*the last part is where client's filename goes */
-	
-
-	/*get file contents and put it into the buffer */
-	FILE *file;
-	char c;
-	file = fopen(filepath, "r");
-	if(file == NULL) {
-		err(1, "ERROR: file failed to open");
-	}
-	//c = fgetc(file);
-	while(c != EOF) {
-		c = fgetc(file);
-		if(c == '\n') {
-			break;
-		}
-		strncat(buffer, &c, 1);
-		
-	}
-	fclose(file);
-
-
 	memset(&sockname, 0, sizeof(sockname));
 	sockname.sin_family = AF_INET;
 	sockname.sin_port = htons(port);
@@ -215,6 +187,35 @@ int main(int argc,  char *argv[])
 			}
 
 			printf("SERVER FILENAME RECEIVED: %s\n", buff_filename);
+
+
+
+			/*get filename's path!!!! */
+		        char cwd_file[10000];
+        		const char* temp_f = getcwd(cwd_file, sizeof(cwd_file));
+        		char filepath[10000];
+        		strcat(filepath, temp_f);
+        		strcat(filepath, "/solution/testing_files/");
+			strcat(filepath, buff_filename);
+
+
+
+			/*get file contents and put it into the buffer */
+        		FILE *file;
+        		char c;
+        		file = fopen(filepath, "r");
+        		if(file == NULL) {
+                		err(1, "ERROR: file failed to open");
+        		}
+        		while(c != EOF) {
+                		c = fgetc(file);
+                		if(c == '\n') {
+                        		break;
+                		}
+                		strncat(buffer, &c, 1);
+         
+        		}
+        		fclose(file);
 
 			/*
 			 * write the message to the client, being sure to

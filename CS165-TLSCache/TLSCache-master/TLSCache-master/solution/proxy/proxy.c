@@ -247,10 +247,12 @@ int main(int argc,  char *argv[])
 			server_sa.sin_family = AF_INET;
 			server_sa.sin_port = htons(port_server);
 			
-			const char *temp_proxyid = "127.0.0.1";
-			server_sa.sin_addr.s_addr = inet_addr(temp_proxyid);
+			/*const char *temp_proxyid = "127.0.0.1";
+			server_sa.sin_addr.s_addr = inet_addr(temp_proxyid);*/
+
+			server_sa.sin_addr.s_addr = client.sin_addr.s_addr;
 			if (server_sa.sin_addr.s_addr == INADDR_NONE) {
-				fprintf(stderr, "Invalid IP address %s\n", temp_proxyid);
+				errx(1, "Invalid IP address\n");
 				usage();
 			}
 
@@ -272,7 +274,7 @@ int main(int argc,  char *argv[])
 			if (tls_connect_socket(tls_ctx2, sd_2, "localhost") == -1)
 				errx(1, "tls connection failed (%s)", tls_error(tls_ctx2));
 
-			printf("I connected with server_solution!!! %s\n", temp_proxyid);
+			//printf("I connected with server_solution!!! %s\n", temp_proxyid);
 			do {
 				if ((i_2 = tls_handshake(tls_ctx2)) == -1)
 					errx(1, "tls handshake failed (%s)", tls_error(tls_ctx2));
@@ -322,7 +324,7 @@ int main(int argc,  char *argv[])
  * 	 	 	 */
 			buffer2[rc] = '\0';
 			
-			printf("Server_SOLUTION sent:  %s",buffer2);
+			printf("Server_SOLUTION sent:  %s\n",buffer2);
 			close(sd_2);
 
 
@@ -359,38 +361,7 @@ int main(int argc,  char *argv[])
 
                         close(clientsd);
                         exit(0);
-
-
-
-
-
-
-
-
-/*
-			w = 0;
-			written = 0;
-			while (written < strlen(buffer)) {
-				w = tls_write(tls_cctx, buffer + written,
-				    strlen(buffer) - written);
-
-				if (w == TLS_WANT_POLLIN || w == TLS_WANT_POLLOUT)
-					continue;
-
-				if (w < 0) {
-					errx(1, "TLS write failed (%s)", tls_error(tls_cctx));
-				}
-				else
-					written += w;
-			}
-			i = 0;
-			do {
-				i = tls_close(tls_cctx);
-			} while(i == TLS_WANT_POLLIN || i == TLS_WANT_POLLOUT);
-
-			close(clientsd);
-			exit(0);
-*/		}
+		}
 		close(clientsd);
 	}
 }	
