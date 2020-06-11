@@ -194,28 +194,6 @@ int main(int argc,  char *argv[])
   	 * finally - the main loop.  accept connections and deal with 'em
   	 */
 	printf("PROXY up and listening for connections on proxy's port %u\n", port);
-	
-
-	 /*first, set up server_sa to be location of the server_solution --> WORKS */
-                      
-                           /*we successfully connected with server_solution. Server_solution 
- *                          * will give us the message contents. we need to read that message first*/
-
-
-		/*
-                       * finally, we are connected. find out what magnificent wisdom
-                       * our server is going to send to us - since we really don't know
-                       * how much data the server could send to us, we have decided
-                       * we'll stop reading when either our buffer is full, or when
-                       * we get an end of file condition from the read when we read
-                       * 0 bytes - which means that we pretty much assume the server
-                       * is going to send us an entire message, then close the connection
-                       * to us, so that we see an end-of-file condition on the read.
-                       * we also make sure we handle EINTR in case we got interrupted
-                       * by a signal.                     */
-        
-
-
 
 
 
@@ -248,6 +226,17 @@ int main(int argc,  char *argv[])
 						errx(1, "tls handshake failed (%s)", tls_error(tls_ctx));
 				} while(i == TLS_WANT_POLLIN || i == TLS_WANT_POLLOUT);
 			}
+
+			/*we need to read the filename that client wrote us first: */
+			ssize_t t;
+			char buff_readf[200];
+			memset(buff_readf, 0, sizeof(buff_readf));
+			if((t = tls_read(tls_cctx, buff_readf, sizeof(buff_readf)-1)) == -1){
+				errx(1, "Error: couldn't read client's filename\n");
+			}			
+
+			printf("PROXY SIDE FILENAME: %s\n", buff_readf);
+
 
 
 			/*set up server connection here bc we successfully accepted socket

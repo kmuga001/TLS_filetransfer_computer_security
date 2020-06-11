@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 	struct tls_config *tls_cfg = NULL;
 	struct tls *tls_ctx = NULL;
 
-	if (argc != 3)
+	if (argc != 4)
 		usage();
 
         p = strtoul(argv[2], &ep, 10);
@@ -119,14 +119,42 @@ int main(int argc, char *argv[])
 	 * we also make sure we handle EINTR in case we got interrupted
 	 * by a signal.
 	 */
-	
-	printf("IM READING NOWWWWWW %s\n", "CLIENT");
+
+
+	/*TRYING TO SEND FILENAME TO PROXY USING TLS_WRITE */
+
+	char buff_file[200];
+	ssize_t w;
+
+	strcat(buff_file, argv[3]);
+	/*printf("this is buff_file: %s\n", buff_file);*/
+	ssize_t templen = strnlen(buff_file, sizeof(buff_file));
+	if((w = tls_write(tls_ctx, buff_file, templen)) != templen) {
+		errx(1, "Failed to write message");
+	} 
+
+
+	/*w = 0;
+	written = 0;
+	while(written < strlen(buff_file)) {
+		w = tls_write(tls_ctx, buff_file + written, strlen(buff_file) - written);
+
+		if(w == TLS_WANT_POLLIN || w == TLS_WANT_POLLOUT)
+			continue;
+		if(w < 0){
+			errx(1, "TLS client's write failed");
+		} else {
+			written += w;
+		}
+	}
+	*/
+
 
 	r = -1;
 	rc = 0;
 	maxread = sizeof(buffer) - 1; /* leave room for a 0 byte */
 	while ((r != 0) && rc < maxread) {
-		printf("IN THE WHILEEEE READ %s\n", "CLIENT");
+		/*printf("IN THE WHILEEEE READ %s\n", "CLIENT");*/
 		r = tls_read(tls_ctx, buffer + rc, maxread - rc);
 		if (r == TLS_WANT_POLLIN || r == TLS_WANT_POLLOUT)
 			continue;
