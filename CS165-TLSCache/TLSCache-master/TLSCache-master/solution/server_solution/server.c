@@ -30,7 +30,8 @@ static void kidhandler(int signum) {
 int main(int argc,  char *argv[])
 {
 	struct sockaddr_in sockname, client;
-	char buffer[80], *ep;
+	//char buffer[80], *ep;
+	char buffer[1000], *ep;
 	struct sigaction sa;
 	int sd, i;
 	socklen_t clientlen;
@@ -105,9 +106,38 @@ int main(int argc,  char *argv[])
 		errx(1, "TLS configuration failed (%s)", tls_error(tls_ctx));
 
 	/* the message we send the client */
-	strlcpy(buffer,
+	/*strlcpy(buffer,
 	    "It was the best of times, it was the worst of times... \n",
 	    sizeof(buffer));
+	*/
+
+
+	/*get filename's path!!!! */
+	char cwd_file[10000];
+	const char* temp_f = getcwd(cwd_file, sizeof(cwd_file));
+	char filepath[10000];
+	strcat(filepath, temp_f);
+	strcat(filepath, "/solution/testing_files/test1.txt"); /*the last part is where client's filename goes */
+	
+
+	/*get file contents and put it into the buffer */
+	FILE *file;
+	char c;
+	file = fopen(filepath, "r");
+	if(file == NULL) {
+		err(1, "ERROR: file failed to open");
+	}
+	//c = fgetc(file);
+	while(c != EOF) {
+		c = fgetc(file);
+		if(c == '\n') {
+			break;
+		}
+		strncat(buffer, &c, 1);
+		
+	}
+	fclose(file);
+
 
 	memset(&sockname, 0, sizeof(sockname));
 	sockname.sin_family = AF_INET;
