@@ -1,4 +1,41 @@
-## TLS Cache
+## CS 165 Final Project
+-------------------------
+### Team Quaranteam
+-------------------------
+Kinjal Mugatwala (SID# 862014507)
+
+Tanya Malik (SID# 862042493)
+
+### Running the code
+-------------------------
+Below are the steps that can be used to run our code.
+1. Download and extract the code.
+2. Run the following commands:
+```
+$ cd TLSCache
+$ source ./scripts/setup.sh
+
+Generate the server and client certificates
+$ cd certificates
+$ make
+```
+3. The proxy, server, and client solution code can be run as follows:
+```
+$ cd TLSCache-master
+
+Run the proxy:
+$ ./build/solution/proxy 9188 9199
+
+Run the server (in another terminal):
+$ ./build/solution/server_solution 9199
+
+Run the client (in another terminal), replacing the test1.txt with test2.txt and test3.txt as well:
+$./build/solution/client_solution 127.0.0.1 9188 test1.txt
+```
+
+
+
+### TLS Cache Starter Code
 ------------------------
 
 This repository contains the starter code for the CS165 project. The directory structure is as follows:
