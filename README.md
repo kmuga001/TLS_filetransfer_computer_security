@@ -1,7 +1,7 @@
 ## CS 165 Final Project
 -------------------------
 ### Team Quaranteam
--------------------------
+
 Kinjal Mugatwala (SID# 862014507)
 
 Tanya Malik (SID# 862042493)
