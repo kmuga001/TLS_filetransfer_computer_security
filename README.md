@@ -9,7 +9,7 @@ Tanya Malik (SID# 862042493)
 Discussion Section #021
 
 
-### Running the code
+### Running the code - For Our Project
 -------------------------
 Below are the steps that can be used to run our code.
 1. Download and extract the code.
@@ -52,7 +52,7 @@ licenses/	// Open source licenses for code used.
 ```
 
 
-### Steps
+### Steps for Starter Code
 -------------------------
 1. Download and extract the code.
 2. Run the following commands:
