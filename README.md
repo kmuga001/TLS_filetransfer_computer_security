@@ -6,6 +6,9 @@ Kinjal Mugatwala (SID# 862014507)
 
 Tanya Malik (SID# 862042493)
 
+Discussion Section #021
+
+
 ### Running the code
 -------------------------
 Below are the steps that can be used to run our code.
